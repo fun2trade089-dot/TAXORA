@@ -1,0 +1,12 @@
+[project]
+name = "tax-core"
+version = "0.1.0"
+description = "Deterministic Indian Income Tax calculation engine for FY 2024-25 (AY 2025-26)"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.0",
+]
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
