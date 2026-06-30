@@ -251,6 +251,7 @@ Maximize your Chapter VI-A deductions if opting for the Old Regime. You currentl
             />
             <button
               type="submit"
+              aria-label="Send query"
               disabled={isTyping}
               className="bg-blue-600 hover:bg-blue-500 disabled:opacity-50 px-5 py-3 rounded-xl text-sm font-semibold transition-all duration-200 shadow-lg shadow-blue-600/20 flex items-center justify-center cursor-pointer shrink-0"
             >
