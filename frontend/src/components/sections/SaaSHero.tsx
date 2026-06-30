@@ -4,7 +4,6 @@ import {
   TrendingUp, 
   FileCheck, 
   Sparkles, 
-  Play, 
   CheckCircle,
   Clock,
   ArrowRight
@@ -65,18 +64,6 @@ export default function SaaSHero() {
                 Get Started
                 <ArrowRight className="h-4 w-4 text-teal-400 group-hover:translate-x-1 transition-transform" />
               </span>
-            </button>
-
-            {/* Secondary Button */}
-            <button 
-              onClick={() => {
-                const el = document.getElementById('demo');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="px-6 py-3.5 bg-slate-900/40 hover:bg-slate-900/80 border border-slate-800 text-slate-300 hover:text-white font-semibold text-sm rounded-xl transition-all duration-200 flex items-center gap-2 shadow-lg cursor-pointer"
-            >
-              <Play className="h-4 w-4 fill-current text-slate-400" />
-              Watch Demo
             </button>
           </div>
 
