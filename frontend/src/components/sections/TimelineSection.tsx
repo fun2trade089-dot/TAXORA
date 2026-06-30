@@ -82,7 +82,7 @@ export default function TimelineSection() {
                 transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               >
                 {/* Left pane: empty on desktop for odd, contains card on desktop for even */}
-                <div className={`w-full md:w-1/2 flex justify-start md:justify-end pr-0 md:pr-12 pl-12 md:pl-0 order-2 md:order-1 ${isEven ? 'md:flex' : 'md:hidden'}`}>
+                <div className={`w-full md:w-1/2 justify-start md:justify-end pr-0 md:pr-12 pl-12 md:pl-0 order-2 md:order-1 ${isEven ? 'hidden md:flex' : 'hidden'}`}>
                   <div className="p-6 bg-slate-900/20 border border-slate-800/60 rounded-2xl hover:border-blue-500/20 shadow-lg backdrop-blur-md transition-all duration-300 max-w-md text-left relative overflow-hidden group hover:bg-slate-900/30">
                     <div className="absolute top-0 right-0 w-12 h-12 bg-blue-500/5 rounded-full blur-xl group-hover:bg-blue-500/10 transition-colors" />
                     <h3 className="text-base font-bold text-white tracking-tight flex items-center gap-2">
@@ -103,7 +103,7 @@ export default function TimelineSection() {
                 </div>
 
                 {/* Right pane: empty on desktop for even, contains card on desktop for odd */}
-                <div className={`w-full md:w-1/2 flex justify-start pl-12 pr-0 md:pr-0 order-2 md:order-3 ${!isEven ? 'md:flex' : 'md:hidden'}`}>
+                <div className={`w-full md:w-1/2 flex justify-start pl-12 pr-0 md:pr-0 order-2 md:order-3 ${!isEven ? 'flex md:flex' : 'flex md:hidden'}`}>
                   <div className="p-6 bg-slate-900/20 border border-slate-800/60 rounded-2xl hover:border-teal-500/20 shadow-lg backdrop-blur-md transition-all duration-300 max-w-md text-left relative overflow-hidden group hover:bg-slate-900/30">
                     <div className="absolute top-0 right-0 w-12 h-12 bg-teal-500/5 rounded-full blur-xl group-hover:bg-teal-500/10 transition-colors" />
                     <h3 className="text-base font-bold text-white tracking-tight flex items-center gap-2">

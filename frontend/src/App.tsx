@@ -344,7 +344,7 @@ Filing under the NEW regime saves ₹50,180 u/s 115BAC(1A).
                         shineColor="#60a5fa" 
                         className="text-lg font-black tracking-tight leading-none block" 
                       />
-                      <span className="text-[9px] text-slate-500 tracking-widest font-bold uppercase mt-0.5 block">The Future of Tax Intelligence</span>
+                      <span className="text-[9px] text-slate-500 tracking-widest font-bold uppercase mt-0.5 hidden sm:block">The Future of Tax Intelligence</span>
                     </div>
                   </a>
 
@@ -406,7 +406,7 @@ Filing under the NEW regime saves ₹50,180 u/s 115BAC(1A).
                       shineColor="#60a5fa" 
                       className="text-lg font-bold leading-none block" 
                     />
-                    <span className="text-[10px] text-slate-400 tracking-wider font-semibold">Virtual CA Co-Pilot</span>
+                    <span className="text-[10px] text-slate-400 tracking-wider font-semibold hidden sm:block">Virtual CA Co-Pilot</span>
                   </div>
                 </div>
 
