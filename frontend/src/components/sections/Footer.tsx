@@ -73,39 +73,60 @@ export default function Footer() {
         </div>
 
         {/* Quick Links Column (2/12 cols) */}
-        <div className="md:col-span-2.5 flex flex-col gap-4">
+        <div className="md:col-span-3 flex flex-col gap-4">
           <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Quick Links</span>
           <ul className="flex flex-col gap-2.5 text-xs text-slate-400">
             <li>
-              <a href="#dashboard" className="hover:text-white transition-colors cursor-pointer">Homepage</a>
+              <a href="#top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="hover:text-white transition-colors cursor-pointer">Homepage</a>
             </li>
             <li>
-              <a href="#dashboard" className="hover:text-white transition-colors cursor-pointer font-medium text-blue-400">Try AI Simulator</a>
+              <a href="#demo" onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' });
+              }} className="hover:text-white transition-colors cursor-pointer font-medium text-blue-400">Try AI Simulator</a>
             </li>
             <li>
-              <a href="#chat" className="hover:text-white transition-colors cursor-pointer">CA Chat Session</a>
+              <a href="#demo" onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' });
+              }} className="hover:text-white transition-colors cursor-pointer">CA Chat Session</a>
             </li>
             <li>
-              <a href="#dashboard" className="hover:text-white transition-colors cursor-pointer">Filing Checklist</a>
+              <a href="#how-it-works" onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' });
+              }} className="hover:text-white transition-colors cursor-pointer">Filing Checklist</a>
             </li>
           </ul>
         </div>
 
         {/* Resources Column (2.5/12 cols) */}
-        <div className="md:col-span-2.5 flex flex-col gap-4">
+        <div className="md:col-span-3 flex flex-col gap-4">
           <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Legal References</span>
           <ul className="flex flex-col gap-2.5 text-xs text-slate-400">
             <li>
-              <a href="#dashboard" className="hover:text-white transition-colors cursor-pointer">Section 80C Guide</a>
+              <a href="#faq" onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' });
+              }} className="hover:text-white transition-colors cursor-pointer">Section 80C Guide</a>
             </li>
             <li>
-              <a href="#dashboard" className="hover:text-white transition-colors cursor-pointer">HRA Exemption Rules</a>
+              <a href="#faq" onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' });
+              }} className="hover:text-white transition-colors cursor-pointer">HRA Exemption Rules</a>
             </li>
             <li>
-              <a href="#dashboard" className="hover:text-white transition-colors cursor-pointer">Budget 2024 Slabs</a>
+              <a href="#pricing" onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+              }} className="hover:text-white transition-colors cursor-pointer">Budget 2024 Slabs</a>
             </li>
             <li>
-              <a href="#dashboard" className="hover:text-white transition-colors cursor-pointer">Capital Gains u/s 112A</a>
+              <a href="#features" onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
+              }} className="hover:text-white transition-colors cursor-pointer">Capital Gains u/s 112A</a>
             </li>
           </ul>
         </div>
@@ -137,9 +158,18 @@ export default function Footer() {
           © {currentYear} TAXORA. All rights reserved.
         </span>
         <div className="flex items-center gap-6 text-xs text-slate-500">
-          <a href="#dashboard" className="hover:text-slate-350 transition-colors cursor-pointer">Privacy Policy</a>
-          <a href="#dashboard" className="hover:text-slate-350 transition-colors cursor-pointer">Terms of Service</a>
-          <a href="#dashboard" className="hover:text-slate-350 transition-colors cursor-pointer">Disclaimer</a>
+          <a href="#faq" onClick={(e) => {
+            e.preventDefault();
+            document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' });
+          }} className="hover:text-slate-355 transition-colors cursor-pointer">Privacy Policy</a>
+          <a href="#faq" onClick={(e) => {
+            e.preventDefault();
+            document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' });
+          }} className="hover:text-slate-355 transition-colors cursor-pointer">Terms of Service</a>
+          <a href="#faq" onClick={(e) => {
+            e.preventDefault();
+            document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' });
+          }} className="hover:text-slate-355 transition-colors cursor-pointer">Disclaimer</a>
         </div>
       </div>
 

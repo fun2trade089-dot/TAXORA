@@ -13,7 +13,7 @@ interface CountUpProps {
 function CountUp({ to, duration = 2, decimals = 0, prefix = '', suffix = '' }: CountUpProps) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-50px' });
+  const isInView = useInView(ref, { once: true, margin: '-10px' });
 
   useEffect(() => {
     if (!isInView) return;
@@ -53,7 +53,7 @@ function CountUp({ to, duration = 2, decimals = 0, prefix = '', suffix = '' }: C
 
 export default function StatsSection() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const isContainerInView = useInView(containerRef, { once: true, margin: '-100px' });
+  const isContainerInView = useInView(containerRef, { once: true, margin: '-10px' });
 
   const containerVariants = {
     hidden: {},

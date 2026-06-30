@@ -294,7 +294,7 @@ Filing under the NEW regime saves ₹50,180 u/s 115BAC(1A).
   };
 
   return (
-    <div className="min-h-screen text-slate-100 flex flex-col font-sans selection:bg-purple-600 selection:text-white relative overflow-x-hidden bg-[#0A0A0A]">
+    <div className="min-h-screen text-slate-100 flex flex-col font-sans selection:bg-purple-600 selection:text-white relative overflow-x-hidden bg-transparent">
       
       {/* 1. Aurora background container - spans full viewport, behind everything */}
       <div className="fixed inset-0 -z-20 w-screen h-screen overflow-hidden pointer-events-none">

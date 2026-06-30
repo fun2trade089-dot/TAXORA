@@ -19,8 +19,8 @@ export default function PricingSection() {
   const tiers: Tier[] = [
     {
       name: 'Starter',
-      price: '₹499',
-      period: '/ Financial Year',
+      price: 'Free',
+      period: '',
       description: 'For individuals filing single salary income profiles u/s 16.',
       features: [
         'Salary Income parsing & mapping',
@@ -34,7 +34,7 @@ export default function PricingSection() {
     },
     {
       name: 'Professional',
-      price: '₹1,999',
+      price: '₹499',
       period: '/ Financial Year',
       badge: 'RECOMMENDED / CA CO-PILOT',
       description: 'For professionals, traders, freelancers, and let-out property owners.',

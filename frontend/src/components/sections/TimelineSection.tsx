@@ -78,7 +78,7 @@ export default function TimelineSection() {
                 className={`relative w-full flex flex-col md:flex-row items-start md:items-center justify-start md:justify-center z-10`}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-80px' }}
+                viewport={{ once: true, margin: '-10px' }}
                 transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               >
                 {/* Left pane: empty on desktop for odd, contains card on desktop for even */}
@@ -96,7 +96,7 @@ export default function TimelineSection() {
                 </div>
 
                 {/* Center node: connecting node circle */}
-                <div className="absolute left-0 md:left-1/2 transform -translate-x-[7px] md:-translate-x-1/2 z-20 order-1 md:order-2 flex items-center justify-center">
+                <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 z-20 order-1 md:order-2 flex items-center justify-center">
                   <div className={`p-2.5 rounded-full border shadow-lg backdrop-blur-md transition-all duration-300 ${step.accent} scale-100 hover:scale-110`}>
                     {step.icon}
                   </div>
