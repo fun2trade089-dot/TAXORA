@@ -30,7 +30,7 @@ load_dotenv()
 class VirtualCAAgent:
     """AI Agent acting as a virtual Chartered Accountant (CA) co-pilot."""
 
-    def __init__(self, model_name: str = "gemini-1.5-flash"):
+    def __init__(self, model_name: str = "gemini-2.5-flash"):
         """Initialize the agent.
 
         Loads GEMINI_API_KEY from environment variables and sets up the LLM.
