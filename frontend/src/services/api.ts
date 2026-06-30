@@ -1,6 +1,6 @@
 import { supabase } from '../supabase';
 
-const API_BASE_URL = 'http://localhost:8000';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
 
 // Helper to get authorization headers
 async function getAuthHeaders(): Promise<Record<string, string>> {
