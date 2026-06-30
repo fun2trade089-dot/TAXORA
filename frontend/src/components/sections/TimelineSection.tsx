@@ -49,7 +49,7 @@ export default function TimelineSection() {
   ];
 
   return (
-    <section className="w-full py-16 px-6 md:px-12 relative flex flex-col items-center justify-center">
+    <section id="how-it-works" className="w-full py-16 px-6 md:px-12 relative flex flex-col items-center justify-center">
       {/* Title Header */}
       <div className="text-center flex flex-col items-center gap-3 max-w-xl mb-20">
         <span className="text-xs font-semibold tracking-wider text-purple-400 uppercase">THE ADVISORY WORKFLOW</span>

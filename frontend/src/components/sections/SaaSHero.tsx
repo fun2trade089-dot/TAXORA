@@ -50,7 +50,10 @@ export default function SaaSHero() {
 
           <div className="flex flex-wrap gap-4 mt-4 w-full sm:w-auto">
             {/* Primary Button: Border Beam Effect */}
-            <button className="relative px-6 py-3.5 bg-slate-900 border border-slate-800 text-white font-semibold text-sm rounded-xl hover:bg-slate-900/60 transition-all duration-300 shadow-xl shadow-blue-500/5 cursor-pointer overflow-hidden group">
+            <button 
+              onClick={() => window.location.hash = '#login'} 
+              className="relative px-6 py-3.5 bg-slate-900 border border-slate-800 text-white font-semibold text-sm rounded-xl hover:bg-slate-900/60 transition-all duration-300 shadow-xl shadow-blue-500/5 cursor-pointer overflow-hidden group"
+            >
               <BorderBeam 
                 size={120} 
                 duration={5} 
@@ -65,7 +68,13 @@ export default function SaaSHero() {
             </button>
 
             {/* Secondary Button */}
-            <button className="px-6 py-3.5 bg-slate-900/40 hover:bg-slate-900/80 border border-slate-800 text-slate-300 hover:text-white font-semibold text-sm rounded-xl transition-all duration-200 flex items-center gap-2 shadow-lg cursor-pointer">
+            <button 
+              onClick={() => {
+                const el = document.getElementById('demo');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="px-6 py-3.5 bg-slate-900/40 hover:bg-slate-900/80 border border-slate-800 text-slate-300 hover:text-white font-semibold text-sm rounded-xl transition-all duration-200 flex items-center gap-2 shadow-lg cursor-pointer"
+            >
               <Play className="h-4 w-4 fill-current text-slate-400" />
               Watch Demo
             </button>

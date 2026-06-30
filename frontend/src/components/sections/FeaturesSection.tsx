@@ -49,7 +49,7 @@ export default function FeaturesSection() {
   ];
 
   return (
-    <section className="w-full py-16 px-6 md:px-12 relative flex flex-col items-center justify-center">
+    <section id="features" className="w-full py-16 px-6 md:px-12 relative flex flex-col items-center justify-center">
       {/* Title Header */}
       <div className="text-center flex flex-col items-center gap-3 max-w-xl mb-16">
         <span className="text-xs font-semibold tracking-wider text-teal-400 uppercase">PLATFORM CAPABILITIES</span>

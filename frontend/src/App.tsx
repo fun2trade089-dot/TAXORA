@@ -23,6 +23,7 @@ import PricingSection from './components/sections/PricingSection';
 import FAQSection from './components/sections/FAQSection';
 import Footer from './components/sections/Footer';
 import LoginPage from './components/sections/LoginPage';
+import BenefitsSection from './components/sections/BenefitsSection';
 import { supabase } from './supabase';
 import { 
   optimizeTax, 
@@ -293,7 +294,7 @@ Filing under the NEW regime saves ₹50,180 u/s 115BAC(1A).
   };
 
   return (
-    <div className="min-h-screen text-slate-100 flex flex-col font-sans selection:bg-purple-600 selection:text-white relative overflow-x-hidden">
+    <div className="min-h-screen text-slate-100 flex flex-col font-sans selection:bg-purple-600 selection:text-white relative overflow-x-hidden bg-[#0A0A0A]">
       
       {/* 1. Aurora background container - spans full viewport, behind everything */}
       <div className="fixed inset-0 -z-20 w-screen h-screen overflow-hidden pointer-events-none">
@@ -303,25 +304,98 @@ Filing under the NEW regime saves ₹50,180 u/s 115BAC(1A).
           blend={0.6} 
         />
         {/* Subtle dark overlay for premium aesthetics */}
-        <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-[#0A0A0A]/85 backdrop-blur-[2px]" />
       </div>
 
       {/* 2. Content overlay - placed on top of Aurora (z-10) */}
       <div className="relative z-10 w-full flex-1 flex flex-col">
         
         {!session ? (
-          <LoginPage onLoginSuccess={(sess) => {
-            setSession(sess);
-            syncChatHistory(sess);
-            runOptimization(profile);
-          }} />
+          activeTab === '#login' ? (
+            <div className="flex flex-col items-center justify-center min-h-screen py-12 px-6">
+              <button 
+                onClick={() => window.location.hash = '#dashboard'}
+                className="mb-6 text-xs text-slate-400 hover:text-white transition-colors cursor-pointer flex items-center gap-1.5 bg-slate-900/40 border border-slate-800/80 px-4 py-2 rounded-full hover:bg-slate-900"
+              >
+                ← Back to Homepage
+              </button>
+              <LoginPage onLoginSuccess={(sess) => {
+                setSession(sess);
+                syncChatHistory(sess);
+                runOptimization(profile);
+                window.location.hash = '#dashboard';
+              }} />
+            </div>
+          ) : (
+            <>
+              {/* Sticky Landing Navbar */}
+              <header className="sticky top-0 w-full border-b border-white/5 bg-[#0A0A0A]/60 backdrop-blur-md flex flex-col items-center py-4 px-6 md:px-12 z-50 transition-all duration-300">
+                <div className="w-full max-w-5xl flex items-center justify-between">
+                  {/* Logo */}
+                  <a href="#dashboard" className="flex items-center gap-3 group">
+                    <div className="p-2 bg-gradient-to-tr from-blue-600 to-teal-500 rounded-xl shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform duration-300">
+                      <Sparkles className="h-5 w-5 text-white" />
+                    </div>
+                    <div>
+                      <ShinyText 
+                        text="TAXORA" 
+                        speed={3} 
+                        color="#ffffff" 
+                        shineColor="#60a5fa" 
+                        className="text-lg font-black tracking-tight leading-none block" 
+                      />
+                      <span className="text-[9px] text-slate-500 tracking-widest font-bold uppercase mt-0.5 block">The Future of Tax Intelligence</span>
+                    </div>
+                  </a>
+
+                  {/* Navigation Links */}
+                  <nav className="hidden md:flex items-center gap-8">
+                    <a href="#features" className="text-xs font-semibold text-slate-400 hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.3)] transition-all">Features</a>
+                    <a href="#how-it-works" className="text-xs font-semibold text-slate-400 hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.3)] transition-all">How It Works</a>
+                    <a href="#pricing" className="text-xs font-semibold text-slate-400 hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.3)] transition-all">Pricing</a>
+                    <a href="#faq" className="text-xs font-semibold text-slate-400 hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.3)] transition-all">FAQ</a>
+                  </nav>
+
+                  {/* Actions */}
+                  <div className="flex items-center gap-4">
+                    <a 
+                      href="#login" 
+                      className="text-xs font-semibold text-slate-350 hover:text-white transition-colors"
+                    >
+                      Login
+                    </a>
+                    <a 
+                      href="#login"
+                      className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-blue-500/20 transition-all hover:-translate-y-0.5"
+                    >
+                      Get Started
+                    </a>
+                  </div>
+                </div>
+              </header>
+
+              {/* Marketing Landing Page Layout */}
+              <div className="flex flex-col w-full">
+                <SaaSHero />
+                <StatsSection />
+                <FeaturesSection />
+                <TimelineSection />
+                <AIDemoSection />
+                <BenefitsSection />
+                <TestimonialsSection />
+                <PricingSection />
+                <FAQSection />
+                <Footer />
+              </div>
+            </>
+          )
         ) : (
           <>
-            {/* Top Navbar with PillNav */}
+            {/* Authenticated Dashboard Top Navbar */}
             <header className="w-full border-b border-slate-800/40 bg-slate-900/10 backdrop-blur-md flex flex-col items-center py-4 px-8 gap-4 shadow-lg shadow-slate-950/20">
               <div className="w-full max-w-5xl flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="p-2.5 bg-gradient-to-tr from-purple-600 to-indigo-600 rounded-xl shadow-lg shadow-purple-500/20">
+                  <div className="p-2.5 bg-gradient-to-tr from-blue-650 to-teal-500 rounded-xl shadow-lg shadow-blue-500/20">
                     <Sparkles className="h-5 w-5 text-white" />
                   </div>
                   <div>
@@ -329,7 +403,7 @@ Filing under the NEW regime saves ₹50,180 u/s 115BAC(1A).
                       text="TAXORA" 
                       speed={3} 
                       color="#ffffff" 
-                      shineColor="#c084fc" 
+                      shineColor="#60a5fa" 
                       className="text-lg font-bold leading-none block" 
                     />
                     <span className="text-[10px] text-slate-400 tracking-wider font-semibold">Virtual CA Co-Pilot</span>
@@ -355,7 +429,7 @@ Filing under the NEW regime saves ₹50,180 u/s 115BAC(1A).
                 <div className="flex items-center gap-4">
                   <div className="hidden md:flex flex-col items-end text-xs text-slate-400">
                     <span className="font-semibold text-slate-200">{session.user?.email}</span>
-                    <span className="text-[9px] uppercase tracking-wider text-purple-400 font-bold">Authenticated</span>
+                    <span className="text-[9px] uppercase tracking-wider text-blue-400 font-bold">Authenticated</span>
                   </div>
                   <button 
                     onClick={handleLogout}
@@ -368,26 +442,57 @@ Filing under the NEW regime saves ₹50,180 u/s 115BAC(1A).
               </div>
             </header>
 
-            {/* Content switchboard */}
+            {/* Authenticated Workspace Switchboard */}
             <main className="flex-1 p-8 overflow-y-auto max-w-5xl w-full mx-auto pb-16">
               
               {activeTab === '#dashboard' && (
-                <div className="flex flex-col gap-6">
-                  <SaaSHero />
-                  <StatsSection />
-                  <FeaturesSection />
-                  <TimelineSection />
-                  <AIDemoSection />
-                  <TestimonialsSection />
-                  <PricingSection />
-                  <FAQSection />
+                <div className="flex flex-col gap-8">
+                  {/* Glassmorphic Welcome Card */}
+                  <div className="p-8 bg-slate-900/40 border border-slate-800/60 rounded-3xl backdrop-blur-md relative overflow-hidden text-left shadow-2xl">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+                    <h2 className="text-2xl font-extrabold text-white tracking-tight">
+                      Welcome back, {session.user?.email?.split('@')[0]}!
+                    </h2>
+                    <p className="text-sm text-slate-400 mt-2 leading-relaxed max-w-xl">
+                      Your virtual CA workspace is ready. You can parse your tax logs, check compliance rules u/s 10(13A) and Chapter VI-A, and test different scenarios below.
+                    </p>
+                  </div>
+
+                  {/* Summary Metric Widgets Row */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="p-6 bg-slate-900/25 border border-slate-800/60 rounded-2xl text-left backdrop-blur-md">
+                      <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Recommended Regime</span>
+                      <h3 className="text-2xl font-black text-white mt-1.5 flex items-center gap-2">
+                        {optResult?.recommended_regime || 'NEW'} Regime
+                        <span className="text-xs px-2 py-0.5 bg-green-500/10 text-green-400 rounded-full font-medium">Optimal</span>
+                      </h3>
+                      <p className="text-xs text-slate-400 mt-2">Lowest calculated legal liability u/s 115BAC.</p>
+                    </div>
+
+                    <div className="p-6 bg-slate-900/25 border border-slate-800/60 rounded-2xl text-left backdrop-blur-md">
+                      <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Estimated Savings</span>
+                      <h3 className="text-2xl font-black text-teal-400 mt-1.5">
+                        ₹{(optResult?.savings_amount || 50180).toLocaleString()}
+                      </h3>
+                      <p className="text-xs text-slate-400 mt-2">Savings optimized compared to the alternative regime.</p>
+                    </div>
+
+                    <div className="p-6 bg-slate-900/25 border border-slate-800/60 rounded-2xl text-left backdrop-blur-md">
+                      <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Compliance Status</span>
+                      <h3 className="text-2xl font-black text-yellow-500 mt-1.5 flex items-center gap-2">
+                        Warning Flag
+                        <span className="w-2.5 h-2.5 bg-yellow-500 rounded-full animate-pulse" />
+                      </h3>
+                      <p className="text-xs text-slate-400 mt-2">Declaration requirements detected for HRA claims.</p>
+                    </div>
+                  </div>
 
                   {/* Document Upload section */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="p-6 bg-slate-900/40 border border-slate-800/60 rounded-2xl flex flex-col gap-4 backdrop-blur-md relative overflow-hidden">
-                      <h3 className="text-lg font-semibold text-white">In-Memory Upload Center</h3>
+                      <h3 className="text-lg font-semibold text-white text-left">In-Memory Upload Center</h3>
                       
-                      <label className="border border-dashed border-slate-700/60 rounded-xl p-8 flex flex-col items-center justify-center gap-3 hover:border-purple-500/40 transition-colors duration-200 cursor-pointer bg-slate-950/20">
+                      <label className="border border-dashed border-slate-700/60 rounded-xl p-8 flex flex-col items-center justify-center gap-3 hover:border-blue-500/40 transition-colors duration-200 cursor-pointer bg-slate-950/20">
                         <input 
                           type="file" 
                           accept=".pdf,.png,.jpg,.jpeg" 
@@ -396,7 +501,7 @@ Filing under the NEW regime saves ₹50,180 u/s 115BAC(1A).
                           disabled={isUploading}
                         />
                         {isUploading ? (
-                          <Loader className="h-10 w-10 text-purple-400 animate-spin" />
+                          <Loader className="h-10 w-10 text-blue-400 animate-spin" />
                         ) : (
                           <FileText className="h-10 w-10 text-slate-500" />
                         )}
@@ -407,7 +512,7 @@ Filing under the NEW regime saves ₹50,180 u/s 115BAC(1A).
                       </label>
 
                       {uploadStatus && (
-                        <div className="text-xs text-purple-400 font-medium text-center animate-pulse">{uploadStatus}</div>
+                        <div className="text-xs text-blue-400 font-medium text-center animate-pulse">{uploadStatus}</div>
                       )}
                     </div>
 
@@ -415,7 +520,7 @@ Filing under the NEW regime saves ₹50,180 u/s 115BAC(1A).
                     <div className="p-6 bg-slate-900/40 border border-slate-800/60 rounded-2xl flex flex-col gap-4 backdrop-blur-md">
                       <h3 className="text-lg font-semibold text-white flex items-center justify-between">
                         Filing Checklist
-                        <span className="text-xs px-2 py-0.5 bg-purple-500/10 text-purple-400 rounded-full font-medium">3/5 Completed</span>
+                        <span className="text-xs px-2 py-0.5 bg-blue-500/10 text-blue-400 rounded-full font-medium">3/5 Completed</span>
                       </h3>
                       <div className="flex flex-col gap-3">
                         {(optResult?.checklist || [
@@ -423,7 +528,7 @@ Filing under the NEW regime saves ₹50,180 u/s 115BAC(1A).
                           { document: 'Reconcile 26AS/AIS', status: 'REQUIRED', section: 'TDS Crosscheck' }
                         ]).map((item: any, idx: number) => (
                           <div key={idx} className="flex items-start gap-3 p-3 bg-slate-900/50 rounded-xl border border-slate-800/40">
-                            <CheckCircle className={`h-5 w-5 shrink-0 mt-0.5 text-purple-500`} />
+                            <CheckCircle className={`h-5 w-5 shrink-0 mt-0.5 text-blue-500`} />
                             <div className="text-left">
                               <h4 className="text-sm font-medium text-slate-200">{item.document}</h4>
                               <p className="text-xs text-slate-400 mt-0.5">Reference: {item.section} ({item.status})</p>
@@ -439,7 +544,7 @@ Filing under the NEW regime saves ₹50,180 u/s 115BAC(1A).
               )}
 
               {activeTab === '#chat' && (
-                <div className="flex flex-col h-[calc(100vh-14rem)] border border-slate-800/60 bg-slate-950/40 backdrop-blur-md rounded-2xl overflow-hidden shadow-2xl">
+                <div className="flex flex-col h-[calc(100vh-14rem)] border border-slate-800/60 bg-slate-955/40 backdrop-blur-md rounded-2xl overflow-hidden shadow-2xl">
                   <div className="p-4 border-b border-slate-800/60 bg-slate-900/20 flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <span className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse" />
@@ -458,7 +563,7 @@ Filing under the NEW regime saves ₹50,180 u/s 115BAC(1A).
                       <div key={idx} className={`flex ${chat.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
                         <div className={`max-w-2xl rounded-2xl p-6 ${
                           chat.sender === 'user' 
-                            ? 'bg-purple-600 text-white rounded-tr-none' 
+                            ? 'bg-blue-600 text-white rounded-tr-none shadow-lg shadow-blue-500/10' 
                             : 'bg-slate-900/80 border border-slate-800/80 text-slate-200 rounded-tl-none prose prose-invert max-w-none'
                         }`}>
                           {chat.sender === 'user' ? (
@@ -476,7 +581,7 @@ Filing under the NEW regime saves ₹50,180 u/s 115BAC(1A).
                                   return (
                                     <ul key={bIdx} className="list-disc pl-5 space-y-1.5">
                                       {block.split('\n').map((li, lIdx) => (
-                                        <li key={lIdx} className="text-slate-350">{li.replace('- ', '')}</li>
+                                        <li key={lIdx} className="text-slate-300">{li.replace('- ', '')}</li>
                                       ))}
                                     </ul>
                                   );
@@ -496,11 +601,11 @@ Filing under the NEW regime saves ₹50,180 u/s 115BAC(1A).
                       value={query}
                       onChange={(e) => setQuery(e.target.value)}
                       placeholder="Ask a question (e.g. 'Can I claim home loan interest u/s 24b?')"
-                      className="flex-1 bg-slate-900/80 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-purple-500/40 text-slate-200 placeholder-slate-500"
+                      className="flex-1 bg-slate-905/80 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500/40 text-slate-200 placeholder-slate-500"
                     />
                     <button 
                       type="submit"
-                      className="bg-purple-600 hover:bg-purple-500 px-5 py-3 rounded-xl text-sm font-semibold transition-all duration-200 shadow-lg shadow-purple-600/20 cursor-pointer"
+                      className="bg-blue-650 hover:bg-blue-600 px-5 py-3 rounded-xl text-sm font-semibold transition-all duration-200 shadow-lg shadow-blue-600/20 cursor-pointer text-white"
                     >
                       Send Memo
                     </button>
@@ -511,8 +616,8 @@ Filing under the NEW regime saves ₹50,180 u/s 115BAC(1A).
               {activeTab === '#optimizer' && (
                 <div className="flex flex-col gap-6">
                   <div className="p-6 bg-slate-900/40 border border-slate-800/60 rounded-2xl flex flex-col gap-4 backdrop-blur-md">
-                    <h3 className="text-xl font-bold text-white flex items-center gap-2">
-                      <TrendingUp className="h-6 w-6 text-purple-400" />
+                    <h3 className="text-xl font-bold text-white flex items-center gap-2 text-left">
+                      <TrendingUp className="h-6 w-6 text-blue-400" />
                       Tax Slab Optimization Engine
                     </h3>
                     <p className="text-sm text-slate-400 text-left">
@@ -522,14 +627,14 @@ Filing under the NEW regime saves ₹50,180 u/s 115BAC(1A).
                     {/* Slabs comparison bar chart simulator */}
                     <div className="mt-4 p-8 bg-slate-950/80 border border-slate-800/80 rounded-xl min-h-[300px] flex flex-col items-center justify-center border-dashed">
                       <div className="flex items-center gap-1.5 text-slate-500 text-sm">
-                        <TrendingUp className="h-5 w-5 text-purple-500" />
+                        <TrendingUp className="h-5 w-5 text-blue-500" />
                         Interactive Regime Comparison Bar Chart
                       </div>
                       
                       <div className="mt-6 flex gap-8 w-full max-w-md justify-center">
                         <div className="flex flex-col items-center gap-1.5">
                           <div className="w-16 h-48 bg-slate-800 rounded-t-lg relative">
-                            <div className={`absolute bottom-0 w-full bg-purple-500/20 border-t border-purple-500 rounded-t-lg transition-all duration-550`} 
+                            <div className={`absolute bottom-0 w-full bg-blue-500/20 border-t border-blue-500 rounded-t-lg transition-all duration-550`} 
                                  style={{ height: isCalculating ? '20%' : '80%' }} />
                           </div>
                           <span className="text-xs text-slate-400">Old Regime (₹{(optResult?.breakdown?.old_regime?.total_tax || 169260).toLocaleString()})</span>
@@ -537,7 +642,7 @@ Filing under the NEW regime saves ₹50,180 u/s 115BAC(1A).
                         
                         <div className="flex flex-col items-center gap-1.5">
                           <div className="w-16 h-48 bg-slate-800 rounded-t-lg relative">
-                            <div className={`absolute bottom-0 w-full bg-green-500/20 border-t border-green-500 rounded-t-lg transition-all duration-550`}
+                            <div className={`absolute bottom-0 w-full bg-teal-500/20 border-t border-teal-500 rounded-t-lg transition-all duration-550`}
                                  style={{ height: isCalculating ? '20%' : '56%' }} />
                           </div>
                           <span className="text-xs text-slate-400">New Regime (₹{(optResult?.breakdown?.new_regime?.total_tax || 119080).toLocaleString()})</span>
@@ -545,9 +650,9 @@ Filing under the NEW regime saves ₹50,180 u/s 115BAC(1A).
                       </div>
                     </div>
 
-                    <div className="p-4 bg-purple-500/10 border border-purple-500/20 rounded-xl flex gap-3 text-left">
-                      <AlertTriangle className="h-5 w-5 text-purple-400 shrink-0 mt-0.5" />
-                      <div className="text-sm text-purple-300">
+                    <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl flex gap-3 text-left">
+                      <AlertTriangle className="h-5 w-5 text-blue-400 shrink-0 mt-0.5" />
+                      <div className="text-sm text-blue-300">
                         <span className="font-semibold">Optimization Alert:</span> By transitioning to the **New Regime**, you save **₹{(optResult?.savings_amount || 50180).toLocaleString()}** instantly without making any further investments.
                       </div>
                     </div>
